@@ -239,7 +239,7 @@
         
         // Enviar pesquisa
         function enviarPesquisa() {
-            // 1. Validar se todas as perguntas foram respondidas
+            // 1. Validar se todas as perguntas foram respondidas corretamente
             const radios = document.querySelectorAll('input[type="radio"]:checked');
             if (radios.length < 6) {
                 alert("Por favor, responda todas as perguntas!");
