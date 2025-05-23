@@ -1,292 +1,190 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliação de Riscos Psicossociais</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            width: 100%;
-            max-width: 600px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .input-container {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .input-container label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .input-container input[type="text"] {
-            width: 95%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-            text-transform: capitalize; /* Opcional: exibe visualmente com primeira letra maiúscula */
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            background-color: #d9534f;
-            color: white;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 10px;
-        }
-        button:hover {
-            background-color: #c9302c;
-        }
-        .hidden {
-            display: none;
-        }
-        fieldset {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 15px;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        legend {
-            font-weight: bold;
-            padding: 0 5px;
-        }
-        label {
-            display: block;
-            margin: 8px 0;
-            cursor: pointer;
-        }
-        input[type="radio"] {
-            margin-right: 8px;
-        }
-        textarea {
-            width: 95%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: Arial, sans-serif;
-            resize: vertical;
-        }
-        .success-message {
-            color: #28a745;
-            font-weight: bold;
-            margin: 15px 0;
-        }
-        .link-relatorio {
-            display: block;
-            margin-top: 20px;
-            color: #d9534f;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .texto-aviso {  
-            font-weight: normal;  
-            font-size: 14px;      
-            color: #333;          
-            margin-top: 1px;      
-            margin-left: 12px;
-            text-align: justify;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avaliação Psicológica</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+    }
+    .container-box {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+    #nome {
+      text-transform: capitalize;
+    }
+    .pergunta {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    .opcoes-resposta {
+      margin-left: 20px;
+    }
+    .form-check-input {
+      margin-top: 0.3rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="container hidden" id="step1">
-        <h2>Bem-vindo! Vamos começar.</h2>
-        <div class="input-container">
-            <label for="nome">Digite seu nome:</label>
-            <input type="text" id="nome" required>
+  <!-- Tela 1 -->
+  <div class="container-box" id="tela-nome">
+    <h4 class="text-center mb-4">Avaliação de Riscos Psicossociais</h4>
+    <label for="nome" class="form-label">Digite nome e sobrenome:</label>
+    <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+    <button class="btn btn-danger w-100 mt-3" onclick="irParaLoja()">Avançar</button>
+  </div>
+
+  <!-- Tela 2 -->
+  <div class="container-box hidden" id="tela-loja">
+    <h2 class="text-center mb-4">Qual loja você trabalha?</h2>
+    <label for="loja" class="form-label">Selecione a loja:</label>
+    <select id="loja" class="form-control" required>
+      <option value="">Selecione...</option>
+      <option value="Loja 01 - Av. Cel Estevam - Natal RN">Loja 01 - Av. Cel Estevam, Dixsept Rosado - Natal RN</option>
+      <option value="Loja 02 - Av. Cel Estevam - Natal RN">Loja 02 - Av. Cel Estevam, Nazaré - Natal RN</option>
+      <option value="Loja 03 - Av. Dão Silveira, Pitimbu - Natal RN">Loja 03 - Av. Dão Silveira, Pitimbu - Natal RN</option>
+      <option value="Loja 04 - Av. João Medeiros Filho - Natal RN">Loja 04 - Av. João Medeiros Filho - Natal RN</option>
+      <option value="Loja 05 - Cohabinal - Parnamirim RN">Loja 05 - Cohabinal, Parnamirim</option>
+      <option value="Loja 06 - Centro - Mossoró RN">Loja 06 - Centro, Mossoró RN</option>
+      <option value="Loja 07 - Estação - Goianinha RN">Loja 07 - Estação, Goianinha RN</option>
+      <option value="Loja 08 - Bancários - João Pessoa PB">Loja 08 - Bancários, João Pessoa PB</option>
+      <option value="Loja 09 - Centro - Santa Cruz RN">Loja 09 - Centro, Santa Cruz RN</option>
+      <option value="Loja 10 - Rua Dr. Ruy Pereira - São Gonçalo RN">Loja 10 - Rua Dr. Ruy Pereira, São Gonçalo RN</option>
+      <option value="Loja 11 - Av. Prudente de Morais - Natal RN">Loja 11 - Av. Prudente de Morais, Natal RN</option>
+      <option value="Loja 12 - Rua Francisco Marques - Bayeux PB">Loja 12 - Rua Francisco Marques, Bayeux PB</option>
+      <option value="Loja 13 - Av. Ayrton Senna - Natal RN">Loja 13 - Av. Ayrton Senna, Neópolis, Natal RN</option>
+      <option value="Auri Motopeças - Av. Miguel Castro - Natal RN">Auri Motopeças - Av. Miguel Castro, Natal RN</option>
+      <option value="Auparts RN - Dix Sept Rosado - Natal RN">Auparts RN - Dix Sept Rosado, Natal RN</option>
+      <option value="Auparts PB - José Américo - João Pessoa PB">Auparts PB - José Américo, João Pessoa PB</option>
+    </select>
+    <button class="btn btn-danger w-100 mt-3" onclick="irParaFormulario()">Avançar</button>
+  </div>
+
+  <!-- Tela 3 -->
+  <div class="container-box hidden" id="tela-formulario">
+    <h3 class="text-center mb-4">Avaliação de riscos Psicossociais</h3>
+<p>Esta avaliação tem como objetivo identificar fatores que possam estar afetando o bem-estar psicológico de nossos colaboradores. Suas respostas são confidenciais e contribuirão para melhorar a qualidade do ambiente de trabalho. Pedimos que você responda com sinceridade.<br><p>
+    <form id="avaliacaoForm">
+      <div id="perguntas"></div>
+      <div class="mb-3 mt-4">
+        <label for="mensagem" class="form-label">Deseja deixar uma mensagem?</label>
+        <textarea class="form-control" id="mensagem" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-danger w-100">Enviar Avaliação</button>
+    </form>
+  </div>
+
+  <!-- Tela Final -->
+  <div class="container-box text-center hidden" id="tela-final">
+    <h2 id="mensagem-final" class="mb-3"></h2>
+    <p class="text-muted">Sua avaliação foi enviada com sucesso!</p>
+    <button class="btn btn-danger mt-3" onclick="reiniciar()">Nova Avaliação</button>
+  </div>
+
+  <script>
+    const perguntas = [
+      { id: 'respeito', texto: '1. Alguma vez você já se sentiu desrespeitado no seu ambiente de trabalho?' },
+      { id: 'apoio', texto: '2. Alguma vez sua liderança se recusou de ouvir sua opinião ou sugestão para melhoria do setor?' },
+      { id: 'comportamento', texto: '3. Existe algum comportamento inadequado ou inapropriado na sua equipe que lhe cause incômodo?' },
+      { id: 'assedio', texto: '4. Você já sofreu ou presenciou algum caso de assédio moral ou qualquer outro tipo de assédio na empresa?' },
+      { id: 'salario', texto: '5. Considerando suas responsabilidades, e atividades na empresa, você acha que sua remuneração é injusta?' },
+      { id: 'exploracao', texto: '6. Você já se sentiu explorado no seu ambiente de trabalho, seja por carga excessiva, desvalorização ou qualquer outra situação?' },
+      { id: 'desistir', texto: '7. Em algum momento, você já pensou em desistir deste emprego, por questão de saúde emocional?' }
+    ];
+
+    const nomeInput = document.getElementById('nome');
+    const lojaInput = document.getElementById('loja');
+    const perguntasContainer = document.getElementById('perguntas');
+    const formulario = document.getElementById('avaliacaoForm');
+    let nomeFinal = "";
+
+    function irParaLoja() {
+      if (nomeInput.value.trim() === "") {
+        alert("Por favor, informe seu nome.");
+        return;
+      }
+      nomeFinal = capitalizeName(nomeInput.value.trim());
+      document.getElementById('tela-nome').classList.add('hidden');
+      document.getElementById('tela-loja').classList.remove('hidden');
+    }
+
+    function capitalizeName(name) {
+      return name.split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+    }
+
+    function irParaFormulario() {
+      if (lojaInput.value === "") {
+        alert("Por favor, selecione a loja.");
+        return;
+      }
+      document.getElementById('tela-loja').classList.add('hidden');
+      document.getElementById('tela-formulario').classList.remove('hidden');
+
+      perguntasContainer.innerHTML = perguntas.map(p => `
+        <div class="mb-4">
+          <p class="pergunta">${p.texto}</p>
+          <div class="opcoes-resposta">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="${p.id}" id="${p.id}-sim" value="Sim" required>
+              <label class="form-check-label" for="${p.id}-sim">Sim</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="${p.id}" id="${p.id}-nao" value="Não" required>
+              <label class="form-check-label" for="${p.id}-nao">Não</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="${p.id}" id="${p.id}-mais-ou-menos" value="Mais ou menos" required>
+              <label class="form-check-label" for="${p.id}-mais-ou-menos">Mais ou menos</label>
+            </div>
+          </div>
         </div>
-        <button onclick="proximoPasso()">Continuar</button>
-    </div>
+      `).join('');
+    }
 
-    <div class="container hidden" id="step2">
-        <h2>Ótimo, <span id="userName">Carla</span>! Agora, digite sua loja.</h2>
-        <div class="input-container">
-            <label for="loja">Digite a loja:</label>
-            <input type="text" id="loja" required>
-        </div>
-        <button onclick="iniciarPesquisa()">Iniciar Pesquisa</button>
-    </div>
+    formulario.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const dados = {
+        nome: nomeFinal,
+        loja: lojaInput.value,
+        mensagem: document.getElementById('mensagem').value
+      };
+      perguntas.forEach(p => {
+        dados[p.id] = document.querySelector(`input[name="${p.id}"]:checked`).value;
+      });
 
-    <div class="container hidden" id="survey">
-        <h2>Avaliação de Riscos Psicossociais no Trabalho</h2>
-        <p class="texto-aviso">  
-            Esta avaliação tem como objetivo identificar fatores que possam estar afetando o bem-estar psicológico de nossos colaboradores. Suas respostas são confidenciais e contribuirão para melhorar a qualidade do ambiente de trabalho. Pedimos que você responda com sinceridade.  
-        </p>
+      fetch("https://script.google.com/macros/s/AKfycbywBVFtIXEXb9aQsiCvEp_GWAzFo8jZ0qs_zD9fDqK2hGfgQ8XgQFrM7PM505CGcLa35Q/exec", {
+        method: "POST",
+        body: new URLSearchParams(dados)
+      })
+      .then(() => {
+        document.getElementById('tela-formulario').classList.add('hidden');
+        showThankYou(nomeFinal);
+      })
+      .catch(err => alert("Erro ao enviar: " + err));
+    });
 
-        <form id="surveyForm">
-            <input type="hidden" id="hiddenNome" name="nome" value="">
-            <input type="hidden" id="hiddenLoja" name="loja" value="">
-            
-            <fieldset>
-                <legend>1. Você se sente respeitado e valorizado no ambiente de trabalho?</legend>
-                <label><input type="radio" name="respeito_valorizado" value="Sim" required> Sim</label>
-                <label><input type="radio" name="respeito_valorizado" value="Não"> Não</label>
-                <label><input type="radio" name="respeito_valorizado" value="Mais ou menos"> Mais ou menos</label>
-            </fieldset>
+    function showThankYou(nome) {
+      document.getElementById('mensagem-final').innerText = `Obrigado, ${nome}.`;
+      document.getElementById('tela-final').classList.remove('hidden');
+    }
 
-            <fieldset>
-                <legend>2. A empresa oferece recursos e apoio adequados para um ambiente saudável?</legend>
-                <label><input type="radio" name="recursos_apoio" value="Sim" required> Sim</label>
-                <label><input type="radio" name="recursos_apoio" value="Não"> Não</label>
-                <label><input type="radio" name="recursos_apoio" value="Mais ou menos"> Mais ou menos</label>
-            </fieldset>
-
-            <fieldset>
-                <legend>3. Você já presenciou ou foi alvo de comportamentos ou comentários inapropriados no trabalho?</legend>
-                <label><input type="radio" name="comportamentos_inapropriados" value="Sim" required> Sim</label>
-                <label><input type="radio" name="comportamentos_inapropriados" value="Não"> Não</label>
-                <label><input type="radio" name="comportamentos_inapropriados" value="Mais ou menos"> Mais ou menos</label>
-            </fieldset>
-
-            <fieldset>
-                <legend>4. Você já sofreu assédio moral ou outro tipo, dentro da empresa?</legend>
-                <label><input type="radio" name="assedio_moral" value="Sim" required> Sim</label>
-                <label><input type="radio" name="assedio_moral" value="Não"> Não</label>
-                <label><input type="radio" name="assedio_moral" value="Mais ou menos"> Mais ou menos</label>
-            </fieldset>
-
-            <fieldset>
-                <legend>5. Você está satisfeito com a sua realidade salarial?</legend>
-                <label><input type="radio" name="satisfacao_salarial" value="Sim" required> Sim</label>
-                <label><input type="radio" name="satisfacao_salarial" value="Não"> Não</label>
-                <label><input type="radio" name="satisfacao_salarial" value="Mais ou menos"> Mais ou menos</label>
-            </fieldset>
-
-            <fieldset>
-                <legend>6. Você já se sentiu explorado alguma vez por excesso de trabalho?</legend>
-                <label><input type="radio" name="explorado_trabalho" value="Sim" required> Sim</label>
-                <label><input type="radio" name="explorado_trabalho" value="Não"> Não</label>
-                <label><input type="radio" name="explorado_trabalho" value="Mais ou menos"> Mais ou menos</label>
-            </fieldset>
-            
-            <fieldset>
-                <legend>7. Deseja acrescentar alguma observação?</legend>
-                <textarea name="observacao" rows="4"></textarea>
-            </fieldset>
-
-            <button type="button" onclick="enviarPesquisa()">Enviar</button>
-        </form>
-    </div>
-   
-    <div class="container hidden" id="successMessage">
-        <h2>Obrigado por participar!</h2>
-        <p class="success-message">Sua pesquisa foi enviada com sucesso.</p>
-        <button onclick="voltarAoInicio()">Responder nova pesquisa</button>
-    </div>
-
-    <script>
-        // Capitaliza a primeira letra do nome e da loja ao sair do campo
-        document.getElementById('nome').addEventListener('blur', function() {
-            this.value = capitalizarTexto(this.value);
-        });
-
-        document.getElementById('loja').addEventListener('blur', function() {
-            this.value = capitalizarTexto(this.value);
-        });
-
-        // Função para capitalizar texto
-        function capitalizarTexto(texto) {
-            return texto.toLowerCase()
-                .replace(/(^|\s)\S/g, function(letra) {
-                    return letra.toUpperCase();
-                });
-        }
-
-        // Passo 1: Coletar nome
-        function proximoPasso() {
-            var nome = document.getElementById("nome").value.trim();
-            if (nome !== "") {
-                document.getElementById("step1").classList.add("hidden");
-                document.getElementById("step2").classList.remove("hidden");
-                document.getElementById("userName").textContent = nome;
-                document.getElementById("hiddenNome").value = nome;
-            }
-        }
-
-        // Passo 2: Coletar loja
-        function iniciarPesquisa() {
-            var loja = document.getElementById("loja").value.trim();
-            if (loja !== "") {
-                document.getElementById("step2").classList.add("hidden");
-                document.getElementById("survey").classList.remove("hidden");
-                document.getElementById("hiddenLoja").value = loja;
-            }
-        }
-        
-        // Enviar pesquisa
-        function enviarPesquisa() {
-            // 1. Validar se todas as perguntas foram respondidas corretamente
-            const radios = document.querySelectorAll('input[type="radio"]:checked');
-            if (radios.length < 6) {
-                alert("Por favor, responda todas as perguntas!");
-                return;
-            }
-
-            // 2. Coletar dados do formulário
-            const formData = new FormData(document.getElementById('surveyForm'));
-            const pesquisa = {
-                nome: formData.get('nome'),
-                loja: formData.get('loja'),
-                data: new Date().toLocaleDateString('pt-BR'),
-                hora: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-                respostas: {
-                    respeito_valorizado: formData.get('respeito_valorizado'),
-                    recursos_apoio: formData.get('recursos_apoio'),
-                    comportamentos_inapropriados: formData.get('comportamentos_inapropriados'),
-                    assedio_moral: formData.get('assedio_moral'),
-                    satisfacao_salarial: formData.get('satisfacao_salarial'),
-                    explorado_trabalho: formData.get('explorado_trabalho'),
-                    observacao: formData.get('observacao')
-                }
-            };
-
-            // 3. Salvar no localStorage
-            let pesquisas = JSON.parse(localStorage.getItem('pesquisas')) || [];
-            pesquisas.push(pesquisa);
-            localStorage.setItem('pesquisas', JSON.stringify(pesquisas));
-
-            // 4. Mostrar mensagem de sucesso
-            document.getElementById("survey").classList.add("hidden");
-            document.getElementById("successMessage").classList.remove("hidden");
-            
-            // 5. Limpar formulário (opcional)
-            document.getElementById("surveyForm").reset();
-        }
-        
-        // Voltar ao início
-        function voltarAoInicio() {
-            document.getElementById("successMessage").classList.add("hidden");
-            document.getElementById("step1").classList.remove("hidden");
-            document.getElementById("nome").value = "";
-            document.getElementById("loja").value = "";
-        }
-
-        // Inicialização: Mostra o primeiro passo
-        document.getElementById("step1").classList.remove("hidden");
-    </script>
+    function reiniciar() {
+      window.location.reload();
+    }
+  </script>
 </body>
 </html>
